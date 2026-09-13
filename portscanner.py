@@ -27,16 +27,16 @@ def ips(ips):
         # Converte a string da sub-rede em uma lista de hosts válidos
         network = ipaddress.ip_network(ips, strict=False)
         hosts = list(network.hosts())
-        print(f"Iniciando varredura na rede {ips} procurando a porta {PORT}...")
-        print(f"Total de IPs a testar: {len(hosts)}")
-        print("-" * 50)
+        #print(f"Iniciando varredura na rede {ips} procurando a porta {PORT}...")
+        #print(f"Total de IPs a testar: {len(hosts)}")
+        #print("-" * 50)
 
         # Executa a varredura em paralelo usando Threads
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             executor.map(scan_ip, hosts)
             
-        print("-" * 50)
-        print("Varredura concluída.")
+        #print("-" * 50)
+        #print("Varredura concluída.")
         
     except ValueError:
         print("Erro: Formato de sub-rede inválido. Use o formato CIDR (Ex: 192.168.1.0/24).")
