@@ -1,7 +1,7 @@
 import socket
 import ipaddress
 from concurrent.futures import ThreadPoolExecutor
-
+import time
 # Configurações do Alvo
 SUBNET = "201.168.2.1/24"  # Defina a faixa de rede (CIDR)
 PORT = 25565                 # Defina a porta única que deseja escanear
@@ -31,7 +31,7 @@ def ips(ips):
         #Converte a string da sub-rede em uma lista de hosts válidos
         network = ipaddress.ip_network(ips, strict=False)
         hosts = list(network.hosts())
-        print(f"Iniciando varredura na rede {ips} procurando a porta {PORT}...")
+        print(f"{time.ctime()} - Iniciando varredura na rede {ips} procurando a porta {PORT}...")
         print(f"Total de IPs a testar: {len(hosts)}")
         print("-" * 50)
 
@@ -48,8 +48,7 @@ def ips(ips):
 
 print("Iniciando...")
 
-# for i in range(0,255):
-#     for j in range(0,255):
-#         ips(f"200.{j}.{i}.0/24")
+for i in range(0,255):
+    for j in range(0,255):
+        ips(f"200.{j}.{i}.0/24")
 
-to_csv('127.0.01')
