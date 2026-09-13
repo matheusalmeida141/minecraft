@@ -41,6 +41,9 @@ def ips(ips):
     except ValueError:
         print("Erro: Formato de sub-rede inválido. Use o formato CIDR (Ex: 192.168.1.0/24).")
 
+
+print("Iniciando...")
+
 for i in range(0,255):
     for j in range(0,255):
         ips(f"200.{j}.{i}.0/24")
