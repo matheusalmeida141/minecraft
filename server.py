@@ -1,9 +1,9 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import pandas as pd
 
-df = pd.read_csv("./servers/ips.csv", header=None)
 
 PORT = 8000
+
+
 
 # Define o que o servidor fará quando receber uma requisição
 class MeuHandler(BaseHTTPRequestHandler):
@@ -16,11 +16,13 @@ class MeuHandler(BaseHTTPRequestHandler):
         self.end_headers()
         
         # 3. Cria a mensagem que vai aparecer na página
-        for i in df[0]:
+        with open("./servers/ips.csv", 'r') as aq:
+            for i in aq:
+                msg  = f"<p>{i}<p>"
             #mensagem += f"<p>{i}</p>"
         # 4. Envia a mensagem convertida em bytes para o navegador
-            msg  = f"<p>{i}<p>"
-            self.wfile.write(bytes(msg, "utf-8"))
+            
+                self.wfile.write(bytes(msg, "utf-8"))
 
 # Configura e inicia o servidor
 with HTTPServer(("", PORT), MeuHandler) as server:
