@@ -17,14 +17,14 @@ def scan_ip(ip):
             # Tenta conectar no IP atual e na porta fixa
             if s.connect_ex((ip_str, PORT)) == 0:
                 print(f"[+] {ip_str} está com a porta {PORT} ABERTA")
-                to_csv(ip_str)
+                to_csv(ip_str, PORT)
     except Exception:
         pass
 
-def to_csv(ip):
+def to_csv(ip:str, port:int):
 
     with open("./servers/ips.csv", mode="a", encoding="utf-8") as aq:
-        aq.write(ip + ',\n')
+        aq.write(ip + ','+ port + ',\n')
 
 def ips(ips):
     try:
