@@ -17,16 +17,18 @@ def to_txt(HOST:str, PORT:int, resp):
     with open("./servers/minecraft.txt", "a", encoding="utf-8") as arquivo:
         arquivo.write(data + ',\n')
 # %%
+lines = []
+with open("./servers/ips.csv", "r") as fl:
+    lines  = fl.readlines()
 
-import pandas as pd
+for i in range(len(lines)):
+    lines[i] = lines[i].replace('\n', '').replace(',','')
 
-df = pd.read_csv("./servers/ips.csv", header=None, names=["hostname","port"],)
-df["port"] = 25565
-df.head()
+lines
 # %%
 minecraftPing = MinecraftScan()
-
-for HOST, PORT in zip(df["hostname"], df["port"]):
+PORT = 25565
+for HOST in (lines):
     resp = minecraftPing.client(HOST, PORT)
     if resp != None:
         to_txt(HOST, PORT, resp)
