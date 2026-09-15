@@ -2,8 +2,6 @@
 import json
 from librarys.minecraftping import MinecraftScan
 
-from watchdog.events import FileSystemEventHandler
-from watchdog.observers import Observer
 
 
 #%%
