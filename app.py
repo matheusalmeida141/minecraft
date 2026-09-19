@@ -1,7 +1,7 @@
 # %%
 import json
 from librarys.minecraftping import MinecraftScan
-
+from librarys.portscanner import portScan
 
 
 #%%
@@ -35,3 +35,8 @@ for HOST in (lines):
     
 
 # %%
+# Configurações do Alvo
+SUBNET = "200"  # Defina a faixa de rede (CIDR)
+PORT = 25565                 # Defina a porta única que deseja escanear
+TIMEOUT = 1.0              # Tempo de espera por resposta (em segundos)
+MAX_WORKERS = 100          # Número de testes em paralelo
