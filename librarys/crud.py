@@ -41,4 +41,6 @@ class database:
         for x in result:
             list.append(x)
         return list
-        
+    
+    def __delattr__(self):
+        self.client.close()
