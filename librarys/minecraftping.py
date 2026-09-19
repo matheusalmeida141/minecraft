@@ -43,9 +43,8 @@ class MinecraftScan:
             print("Conectando")
             sock.connect((HOST,PORT))
 
-            print("Enviando...")
             sock.sendall(full_package)
-            print("Enviado")
+            print("Enviado", str(time.ctime()))
 
 
             status_request_packet = self.__encode_varint(1) + self.__encode_varint(0x00)
