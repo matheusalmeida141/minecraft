@@ -24,7 +24,7 @@ class database:
             raise Exception( "The fallowing error occurred: ", e)
         
     def create(self, IP:str, PORT:int):
-        payload = {"ip":IP, "port":str(PORT)}
+        payload = {"ip":IP, "port":PORT}
         result = self.collection.insert_one(payload)
         print(result.acknowledged)
     
