@@ -20,14 +20,9 @@ class portScan:
                 # Tenta conectar no IP atual e na porta fixa
                 if s.connect_ex((ip_str, self.PORT)) == 0:
                     print(f"[+] {ip_str} está com a porta {self.PORT} ABERTA")
-                    self.to_csv(ip_str, self.PORT)
+                    return(ip_str, self.PORT)
         except Exception:
             pass
-
-    def to_csv(self, ip:str, port:int):
-
-        with open("./servers/ips.csv", mode="a", encoding="utf-8") as aq:
-            aq.write(ip + ','+ port + ',\n')
 
     def ips(self, ips):
         try:
