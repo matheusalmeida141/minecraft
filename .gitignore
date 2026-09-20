@@ -1,4 +1,4 @@
 *.csv
-*.txt
+minecraft.txt
 *.json
 .env
